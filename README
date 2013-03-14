@@ -1,0 +1,68 @@
+ P W F L I P P E R                                             -=~(H)  .--~(T)
+================================================================================
+|        pwflipper: Generate random passwords with your own coin flips.        |
+|        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~        |
+|          Author:  Ashley Holman <dscvlt@gmail.com>                           |
+|         Website:  http://github.com/ashleyholman/pwflipper                   |
+================================================================================
+
+Lost trust in pseudo-random number generators? Take matters into your own hands.
+
+== How to use it ==
+STEP 1: Find a nice, shiny if you can, well-shaped coin.
+STEP 2: Decide on the length of password you want to generate.  Default is 12.
+STEP 3: Decide what characters you want in your password. Available options are:
+  - keyboard:  (DEFAULT)  All printable characters on a US keyboard. [strong]
+  - base64:               Uppercase and lowercase letters, digits, '+' and '/'.
+  - alphanum:             Uppercase and lowercase letters + digits.
+  - alphanumlower:        Lowercase letters + digits.
+  - alphalower:           Lowercase letters only.
+  - digits:               Decimal digits only. [weak]
+STEP 3: Run pwflipper --charset=<charset> <length>
+        eg: ./pwflipper --charset=alphanum 8
+        Note: you can leave off the charset or length options if you wish to
+              use defaults.
+STEP 4: At the "[h|t]" prompt, flip your coin and note the result.
+        ** For heads, hit 'h'.  For tails, hit 't'.
+        Note: The prompt will indicate the current character that you are
+              flipping for, eg. if generating a password of length 8, you will
+              be required to flip for all characters from 1 through 8.
+
+Repeat step 4 until your password is supplied to you!
+
+== Examples ==
+* Generate a base64 password of length 10 characters:
+  ./pwflipper --format=base64 10
+* Generate an 8 character alpha-numeric password:
+  ./pwflipper --format=alphanum 8
+* Generate a password using the strongest character set, of length 12 (DEFAULT)
+  ./pwflipper
+
+== Note regarding restarts ==
+Occasionally after flipping a tail you may receive the message saying:
+
+  "Argh, sorry!  We need to start this char again..."
+
+This is because, on most character sets, it is not possible (at least as far as
+the author has worked out) to generate perfectly uniform random characters with
+a predefined number of flips.  Read the source code for a more technical
+explanation.  When you see this message, the flipping process restarts for the
+current character you are up to.
+
+When you begin the generation process, you are told the percentage chance that a
+character will need to be restarted.  This varies based on the character set.
+In the best case this is 0% (eg. with base64), and in the worst case this is
+anywhere below 50% (alphanumlower is 43.75%).  If restarts are frustrating you,
+alphanum has a restart rate of only 3.125% and has a reasonably large keyspace.
+
+== Issues, Requests, Patches ==
+If you have any issues, suggestions, feedback etc, go to the GitHub page
+(linked at the top of this document) and click on the "Issues" link to create
+a new issue.
+
+If you have a patch you want me to consider, then send me a pull request.
+
+===
+
+THANK YOU.
+Ash
