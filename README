@@ -8,6 +8,20 @@
 
 Lost trust in pseudo-random number generators? Take matters into your own hands.
 
+Pwflipper allows you to generate a random password using a number of different
+available character sets, using your own physical coin tosses as random input.*
+
+Make your next random password a coin-tossed password.
+
+* Coin not included.
+
+== Building ==
+Simply run 'make' in the directory containing the pwflipper source.  This should
+build the 'pwflipper' executable.
+
+The code is intended to build on OSX, Linux, and hopefully any other UNIX-style
+operating systems.
+
 == How to use it ==
 STEP 1: Find a nice, shiny if you can, well-shaped coin.
 STEP 2: Decide on the length of password you want to generate.  Default is 12.
@@ -22,8 +36,8 @@ STEP 3: Run pwflipper --charset=<charset> <length>
         eg: ./pwflipper --charset=alphanum 8
         Note: you can leave off the charset or length options if you wish to
               use defaults.
-STEP 4: At the "[h|t]" prompt, flip your coin and note the result.
-        ** For heads, hit 'h'.  For tails, hit 't'.
+STEP 4: At the "[h|t]" prompt, flip your coin. Go on, give it a good toss.
+        Enter the result: For heads, hit 'h'.  For tails, hit 't'.
         Note: The prompt will indicate the current character that you are
               flipping for, eg. if generating a password of length 8, you will
               be required to flip for all characters from 1 through 8.
@@ -41,7 +55,7 @@ Repeat step 4 until your password is supplied to you!
 == Note regarding restarts ==
 Occasionally after flipping a tail you may receive the message saying:
 
-  "Argh, sorry!  We need to start this char again..."
+  "Argh, sorry!  We need to start this character again..."
 
 This is because, on most character sets, it is not possible (at least as far as
 the author has worked out) to generate perfectly uniform random characters with

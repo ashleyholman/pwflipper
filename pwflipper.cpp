@@ -49,7 +49,7 @@ void init() {
   restartChance = 1.0 - ((float)cardinality / (1 << bitsreq));
 
   // set the terminal to be character-buffered and turn off local echo
-  static struct termios newt;
+  struct termios newt;
   tcgetattr(STDIN_FILENO, &oldt);
   newt = oldt;
   newt.c_lflag &= ~(ICANON);
@@ -123,9 +123,8 @@ bool process_args(int argc, char **argv, int &param1) {
 char flip_for_char(int chrnum) {
   static int flips = 0;
   // num gets constructed by the bits we flip
-  unsigned int num;
+  unsigned int num = 0;
 
-  num = 0;
   for (int i = 0; i < bitsreq; i++) {
     ++flips;
     char result;
@@ -154,7 +153,7 @@ char flip_for_char(int chrnum) {
             // 2^k > cardinality > 2^(k-1).  In order to ensure a perfectly uniform
             // distribution of passwords, we need to totally disregard all work on
             // this character and start again.
-            std::cout << std::endl << "Argh, sorry!  We need to start this char again...";
+            std::cout << std::endl << "Argh, sorry!  We need to start this character again...";
             num = 0;
             i=-1;
           }
